@@ -19,6 +19,7 @@ import seedu.addressbook.ui.TextUi;
 /**
  * Entry point of the Address Book application.
  * Initializes the application and starts the interaction with the user.
+ * adding comment line to test commit and push
  */
 public class Main {
 
