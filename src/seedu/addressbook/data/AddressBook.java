@@ -6,6 +6,8 @@ import seedu.addressbook.data.person.UniquePersonList;
 import seedu.addressbook.data.person.UniquePersonList.DuplicatePersonException;
 import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
 
+import java.util.Comparator;
+
 /**
  * Represents the entire address book. Contains the data of the address book.
  */
@@ -66,6 +68,10 @@ public class AddressBook {
      */
     public UniquePersonList getAllPersons() {
         return new UniquePersonList(allPersons);
+    }
+
+    public void sort(Comparator<Person> nameComparator) {
+        allPersons.sort(nameComparator);
     }
 
     @Override

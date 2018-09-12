@@ -1,8 +1,10 @@
 package seedu.addressbook.commands;
 
 import seedu.addressbook.data.person.Person;
+import seedu.addressbook.data.person.ReadOnlyPerson;
 
 import java.util.Comparator;
+import java.util.List;
 
 public class SortNameCommand extends Command{
 
@@ -14,16 +16,20 @@ public class SortNameCommand extends Command{
 
     public static final String MESSAGE_SORT_ACKNOWEDGEMENT = "Sorting Address Book as requested ...";
 
-    @Override
-    public CommandResult execute() {
-        return new CommandResult(MESSAGE_SORT_ACKNOWEDGEMENT);
+    public static class nameComparator implements Comparator<Person> {
+        public int compare(Person s1, Person s2){
+            int compareValue = s1.getName().fullName.compareTo(s2.getName().fullName);
+            return compareValue;
+        }
     }
 
-    class MyComparator implements Comparator<Person> {
+    @Override
+    public CommandResult execute() {
+        Comparator<Person> NameCompare = new nameComparator();
+        addressBook.sort(NameCompare);
 
-        public int compare(Person s1, Person s2){
-            return s1.getName().fullName.compareTo(s2.getName().fullName);
-        }
+        List<ReadOnlyPerson> allPersons = addressBook.getAllPersons().immutableListView();
+        return new CommandResult(getMessageForPersonListShownSummary(allPersons), allPersons);
     }
 
 }

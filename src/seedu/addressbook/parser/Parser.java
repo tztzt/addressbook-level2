@@ -77,8 +77,8 @@ public class Parser {
         case FindCommand.COMMAND_WORD:
             return prepareFind(arguments);
 
-        case SortNameCommand.COMMAND_WORD:;
-          //  return prepareSortName();
+        case SortNameCommand.COMMAND_WORD:
+            return new SortNameCommand();
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
@@ -128,14 +128,6 @@ public class Parser {
         } catch (IllegalValueException ive) {
             return new IncorrectCommand(ive.getMessage());
         }
-    }
-
-    /**
-     *
-     */
-
-    private void prepareSortName(String args) {
-
     }
 
     /**
