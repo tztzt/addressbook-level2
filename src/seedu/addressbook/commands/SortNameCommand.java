@@ -6,6 +6,10 @@ import seedu.addressbook.data.person.ReadOnlyPerson;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * Sorts the address book according by names in alphabetical order.
+ */
+
 public class SortNameCommand extends Command{
 
     public static final String COMMAND_WORD = "sortname";
@@ -14,7 +18,7 @@ public class SortNameCommand extends Command{
             + "in alphabetical order according to their name.\n"
             + "Example: " + COMMAND_WORD;
 
-    public static final String MESSAGE_SORT_ACKNOWEDGEMENT = "Address Book has been sorted." + "\n";
+    public static final String MESSAGE_SORT_ACKNOWEDGEMENT = "Address Book has been sorted.";
 
     public static class nameComparator implements Comparator<Person> {
         public int compare(Person s1, Person s2){

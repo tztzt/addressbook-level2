@@ -70,6 +70,11 @@ public class AddressBook {
         return new UniquePersonList(allPersons);
     }
 
+    /**
+     * Sorts list by alphabetical order of names.
+     * @param NameComparator
+     */
+
     public void sort(Comparator<Person> nameComparator) {
         allPersons.sort(nameComparator);
     }
