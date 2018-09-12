@@ -14,7 +14,7 @@ public class SortNameCommand extends Command{
             + "in alphabetical order according to their name.\n"
             + "Example: " + COMMAND_WORD;
 
-    public static final String MESSAGE_SORT_ACKNOWEDGEMENT = "Sorting Address Book as requested ...";
+    public static final String MESSAGE_SORT_ACKNOWEDGEMENT = "Address Book has been sorted." + "\n";
 
     public static class nameComparator implements Comparator<Person> {
         public int compare(Person s1, Person s2){
@@ -29,7 +29,10 @@ public class SortNameCommand extends Command{
         addressBook.sort(NameCompare);
 
         List<ReadOnlyPerson> allPersons = addressBook.getAllPersons().immutableListView();
-        return new CommandResult(getMessageForPersonListShownSummary(allPersons), allPersons);
+
+        CommandResult result = new CommandResult(MESSAGE_SORT_ACKNOWEDGEMENT, allPersons);
+
+        return result;
     }
 
 }
